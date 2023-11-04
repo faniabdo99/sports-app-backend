@@ -16,14 +16,18 @@ const User = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         validate:{
-          len: [2, 30]
+          len:{
+            args: [2, 30],
+            msg: "First name must be between 2 and 30 charachters"
+          }
         }
       },
       lastName: {
         type: Sequelize.STRING,
         allowNull: false,
-        validate:{
-          len: [2, 30]
+        len:{
+          args: [2, 30],
+          msg: "Last name must be between 2 and 30 charachters"
         }
       },
       email: {
