@@ -18,12 +18,12 @@ router.get('/', (req, res) => {
         'Someday you will realize that you can\'t depend on anyone but yourself',
         'Being realistic might come off as pessimistic',
         'Keep it real, life is fucked up and will always be',
-        'The one static truth of life is humans are bad',
-        'a person is smart, people are dumb',
+        'The one given truth of life is humans are bad',
+        'A person is smart, people are dumb',
         'AI will replace developers same way calculators replaced mathematicians',
         'Looking back at human history, I don\'t understand how humans are considered "Smart"',
         'Don\'t overdo it, ship and then refactor',
-        'Precftionesm is a syllable to depression',
+        'Precftionesm is the main cause of depression',
         'In a way, we are all depressed',
         'Nobody knows the trouble I\'ve seen, nobody knows my sorrow',
         'You are the author of your own code',
@@ -42,11 +42,15 @@ router.get('/', (req, res) => {
         'It\'s your choice to take this personally',
         'Mr. President, if I\'ve learned one thing today it\'s that sometimes you have to not give a fuck!',
         'Think for you\'rself, don\'t be a sheep',
-        'Well scientifically… traditions are an idiot thing'
+        'Well scientifically… traditions are an idiot thing',
+        'I hate to break it to you, but what people call “love” is just a chemical reaction that compels animals to breed',
+        'Weddings are basically just funerals with cake',
+        'Listen, I\'m not the nicest guy in the universe, because I\'m the smartest, and being nice is something stupid people do to hedge their bets',
+        'He\'s not a hot girl. He can\'t just bail on his life and set up shop in someone else\'s.'
     ];
     res.json({
         success: true,
-        message: 'The backend application is online',
+        message: 'The backend application is online, Check today\'s wisdom',
         wisdomOfTheDay: wisdomOfTheDay[Math.floor(Math.random()*wisdomOfTheDay.length)]
     })
 })
