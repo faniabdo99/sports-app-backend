@@ -11,7 +11,7 @@ import users_controller from './controllers/user_controller.js';
 // Form Data Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+ 
 // Routes
 app.use("/users", users_controller);
 app.get('/', async (req, res) => {

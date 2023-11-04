@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt'
 const User = (sequelize, Sequelize) => {
     const User = sequelize.define("user", {
       id: {
@@ -9,22 +10,26 @@ const User = (sequelize, Sequelize) => {
       username: {
         type: Sequelize.STRING,
         unique: true,
-        allowNull: true,
+        allowNull: true
       },
       firstName: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate:{
+          len: [2, 30]
+        }
       },
       lastName: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate:{
+          len: [2, 30]
+        }
       },
       email: {
         type: Sequelize.STRING,
         unique: true,
         validate: {
-          notNull: true,
-          notEmpty: true,
           isEmail: true,
         },
         allowNull: false,
@@ -32,10 +37,16 @@ const User = (sequelize, Sequelize) => {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate:{
+          min: 6
+        }
       },
       phoneNumber:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate:{
+          min: 10
+        }
       },
       avatar:{
         type: Sequelize.STRING,
@@ -44,7 +55,9 @@ const User = (sequelize, Sequelize) => {
       },
       bio: {
         type: Sequelize.TEXT,
-        allowNull: true
+        validate:{
+          len:[ 25, 5000 ]
+        }
       },
       type:{
         type: Sequelize.STRING,
@@ -74,32 +87,43 @@ const User = (sequelize, Sequelize) => {
       },
       country: {
         type: Sequelize.STRING,
-        allowNull: true,
         validate: {
           isIn: [['Egypt', 'Algeria']]
         }
       },
       gender:{
         type: Sequelize.STRING,
-        allowNull: true,
         validate:{
           isIn: [['male', 'female']]
         }
       },
       dob: {
           type: Sequelize.DATEONLY,
-          allowNull: true,
           validate:{
-            isBeforeToday: function (value) {
-              if (new Date(value) >= new Date()) {
-                throw new Error('Date must be before today');
-              }
-          }
+            isDate: true,
+            isBefore: new Date().toDateString(),
         }
-      }
+      },
+      // Virtual Attributes
+      fullName: {
+        type: Sequelize.VIRTUAL,
+        get() {
+          return `${this.firstName} ${this.lastName}`;
+        },
+        set(value) {
+          throw new Error('Do not try to set the `fullName` value!');
+        }
+      },
     },
     {
       hooks : {
+        beforeCreate: async (user, options) =>{
+          await bcrypt.hash(user.password, 10, function(err, hash) {
+            user.update({
+              password: hash
+            })
+          });
+        },
         afterCreate : async (user, options) => {
           await user.update({
             username: user.email.slice(0, user.email.indexOf('@'))

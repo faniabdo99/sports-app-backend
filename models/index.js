@@ -1,7 +1,7 @@
 'use strict';
 import fs from 'fs';
 import path from 'path';
-import Sequelize from 'sequelize';
+import { Sequelize } from 'sequelize';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,18 +27,9 @@ const importModels = async () => {
       db[model.name] = model(sequelize, Sequelize.DataTypes);
     }
   });
-
   await Promise.all(modelPromises);
 };
-
 await importModels();
-
-// The rest of the code
-
-
-
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
 export default db;
