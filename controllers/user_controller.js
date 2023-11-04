@@ -1,6 +1,18 @@
 import express from 'express'
 import db from '../models/index.js'
+import { standardResponse } from '../includes/responses.js';
 const router = express.Router();
+/**
+ * Return all users endpoint
+ * GET /users/
+ **/
+router.get('/', (req, res) => {
+    db.User.findAll().then(users =>{
+        res.json(users)
+    }).catch(error => {
+        res.json(error)
+    })
+})
 
 /**
  * Create new user
@@ -10,19 +22,6 @@ router.post('/', (req, res) => {
     // Save the data to the database
     db.User.create(req.body).then(response => {
         res.json(response)
-    }).catch(error => {
-        console.log(error)
-        res.json(error)
-    })
-})
-
-/**
- * Return all users endpoint
- * GET /users/
- **/
-router.get('/', (req, res) => {
-    db.User.findAll().then(users =>{
-        res.json(users)
     }).catch(error => {
         res.json(error)
     })
@@ -42,5 +41,19 @@ router.get('/:by/:value', (req, res) => {
     })
 })
 
-
+/**
+ * Update a single user
+ * PUT /users/:id
+ */
+router.put('/:id', (req, res) => {
+    db.User.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        res.send(standardResponse(true, 'User has been updated'))
+    }).catch(() => {
+        res.send(standardResponse(false, 'Something went wrong during the update'))
+    })
+})
 export default router;

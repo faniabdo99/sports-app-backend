@@ -24,7 +24,7 @@ app.post('/users/test', (req, res) => {
 })
 
 // DB Connection and server bootup
-db.sequelize.sync({ force: true }).then(async function () {
+db.sequelize.sync({ force: false }).then(async function () {
   console.log("Database synchronized successfully!");
   app.listen(port, function () {
     console.log("Server is successfully running!");
