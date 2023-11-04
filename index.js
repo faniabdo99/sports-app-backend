@@ -3,11 +3,14 @@ import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
+// Middlewares
+import authenticationMiddleware from './middlewares/authentication.js';
 
 // Database connection
 import db from './models/index.js';
 
 // Controllers
+import home_controller from './controllers/home_controller.js';
 import user_controller from './controllers/user_controller.js';
 import auth_controller from './controllers/auth_controller.js';
 
@@ -16,16 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
  
 // Routes
-app.use("/users", user_controller);
+app.use('/', home_controller);
+app.use('/users', user_controller);
 app.use('/auth', auth_controller);
-app.get('/', async (req, res) => {
-  // Make sure to use the correct model name
-  const users = await db.User.findAll(); // Assuming your model is named User
-  res.json(users);
-});
-app.post('/users/test', (req, res) => {
-  return res.json('Worked');
-})
+
 
 // DB Connection and server bootup
 db.sequelize.sync({ force: false }).then(async function () {
