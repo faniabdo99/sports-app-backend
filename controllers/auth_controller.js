@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken'
 const router = express.Router();
 /**
  * Return JWT for authentication
- * POST /auth/
+ * POST /auth/login
  **/
 router.post('/login', (req, res) => {
     // Fetch the user
@@ -20,7 +20,7 @@ router.post('/login', (req, res) => {
                     if(response) {
                         // The user has been authenticated
                         // Generate a token
-                        jwt.sign({ user: user}, "THE_SECRET_KEY", (error, token) => {
+                        jwt.sign(user.id, process.env.JWT_ENCRYPTION_KEY, (error, token) => {
                             res.json({
                                 success: true,
                                 ...user.dataValues,
