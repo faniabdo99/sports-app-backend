@@ -28,7 +28,21 @@ router.get('/', (req, res) => {
         'Nobody knows the trouble I\'ve seen, nobody knows my sorrow',
         'You are the author of your own code',
         'Code should be written for humans to read it, not for computers to run it',
-        'UI is like a joke, if you have to explain it, it\'s probably no good'
+        'UI is like a joke, if you have to explain it, it\'s probably no good',
+        'I\'ll go, but don\'t you dare ask me to understands',
+        'What, So everyone\'s supposed to sleep every single night now?',
+        'Charging into \'em like a bull — that\'s how we grow as people.',
+        'Worse, you\'re smart',
+        'To live is to risk it all; otherwise you\'re just an inert chunk of randomly assembled molecules drifting wherever the universe blows you.',
+        'Nobody exists on purpose. Nobody belongs anywhere. We\'re all going to die. Come watch TV.',
+        'Have fun with empowerment. It seems to make everyone that gets it really happy',
+        'I just want to go back to hell, where everyone thinks I\'m smart and funny.',
+        'Don\'t deify the people who leave you.',
+        'Bitch, my generation gets traumatized for breakfast!',
+        'It\'s your choice to take this personally',
+        'Mr. President, if I\'ve learned one thing today it\'s that sometimes you have to not give a fuck!',
+        'Think for you\'rself, don\'t be a sheep',
+        'Well scientifically… traditions are an idiot thing'
     ];
     res.json({
         success: true,
