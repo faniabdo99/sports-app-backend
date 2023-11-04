@@ -6,14 +6,16 @@ const port = 3000;
 import db from './models/index.js';
 
 // Controllers
-import users_controller from './controllers/user_controller.js';
+import user_controller from './controllers/user_controller.js';
+import auth_controller from './controllers/auth_controller.js';
 
 // Form Data Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
  
 // Routes
-app.use("/users", users_controller);
+app.use("/users", user_controller);
+app.use('/auth', auth_controller);
 app.get('/', async (req, res) => {
   // Make sure to use the correct model name
   const users = await db.User.findAll(); // Assuming your model is named User
