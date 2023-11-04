@@ -2,6 +2,13 @@
 
 Sports app is mini social netwoek for athletes, it's built around the idea of connection scouts with talent across Africa
 
+## Tech Stack
+
+- NodeJS
+- ExpressJS
+- Mysql Database
+- REST API
+
 ## Installation
 
 To run the backend server, follow these steps:
