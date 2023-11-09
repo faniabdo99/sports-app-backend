@@ -12,6 +12,7 @@ import db from './models/index.js';
 // Controllers
 import home_controller from './controllers/home_controller.js';
 import user_controller from './controllers/user_controller.js';
+import sport_controller from './controllers/sport_controller.js';
 import auth_controller from './controllers/auth_controller.js';
 
 // Form Data Middleware
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/', home_controller);
 app.use('/users', user_controller);
+app.use('/sports', sport_controller);
 app.use('/auth', auth_controller);
 
 

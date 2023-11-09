@@ -33,10 +33,9 @@ const Sport = (sequelize, Sequelize) => {
     },
     {
       hooks : {
-        afterCreate : async (sport, options) => {
-          await sport.update({
-            slug: toSlugCase(sport, 'title')
-          })
+        beforeValidate : async (sport, options) => {
+          // Generate the sport slug
+          sport.slug = toSlugCase(sport, 'title')
         },
       }
   }
