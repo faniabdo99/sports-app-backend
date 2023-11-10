@@ -7,6 +7,7 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
     const wisdomOfTheDay = [
+        // @faniabdo99 contributions
         'One day and that day may never come, the backend server will be down but we will fix it',
         'Anything in the 200 range is good',
         'The creator of expressJs is a sick and twisted fucker, and the developer is a stupid creature who enjoys misery',
@@ -49,17 +50,18 @@ router.get('/', (req, res) => {
         'Don\'t judge me, Cooper. You were never tested like I was. Few men have been.',
         'Oh, How quickly we forget!',
         'In the end, Karma has its way',
+        'Sometimes you gotta run before you can walk',
+        'No amount of money ever bought a second of time',
+        'I just want peace. Turns out resentment is corrosive, and I hate it',
+        'You\'re not the only one cursed with knowledge',
+        // @Shreif's contributions
         'If you are the smaterst person in the room, you are in the wrong room',
         'Common sense is not very common',
         'Can you buy me dinner first?',
         'I usually wait for a 3rd date...',
         'a Good idea should be intuitive',
         'It\'s not me, it\'s you',
-        'I Respect women so much that I stay the hell away from them',
-        'Sometimes you gotta run before you can walk',
-        'No amount of money ever bought a second of time',
-        'I just want peace. Turns out resentment is corrosive, and I hate it',
-        'You\'re not the only one cursed with knowledge'
+        'I Respect women so much that I stay the hell away from them'
     ];
     res.json({
         success: true,
