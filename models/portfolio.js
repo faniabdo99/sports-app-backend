@@ -1,7 +1,7 @@
 import { toSlugCase } from "../includes/model_helpres.js";
 import User from "./user.js";
-const Porfolio = (sequelize, Sequelize) => {
-    const Porfolio = sequelize.define("portfolios", {
+const Portfolio = (sequelize, Sequelize) => {
+    const Portfolio = sequelize.define("portfolios", {
         id: {
             type: Sequelize.UUID,
             primaryKey: true,
@@ -10,7 +10,7 @@ const Porfolio = (sequelize, Sequelize) => {
         },
         title: {
             type: Sequelize.STRING,
-            allowNull: true
+            allowNull: false
         },
         slug: {
             type: Sequelize.STRING,
@@ -36,19 +36,14 @@ const Porfolio = (sequelize, Sequelize) => {
         },
         {
         hooks : {
-            beforeValidate : async (porfolio, options) => {
-            // Generate the porfolio slug
-            porfolio.slug = toSlugCase(porfolio, 'title')
+            beforeValidate : async (portfolio, options) => {
+            // Generate the portfolio slug
+            portfolio.slug = toSlugCase(portfolio, 'title')
             },
         }
     }
-    );
-  // Associations
-  Porfolio.hasOne(User, {
-    foreignKey:{
-        name: 'userId'
-    }
-  })
-  return Porfolio;
+);
+//   Portfolio.belongsTo(User)
+  return Portfolio;
 };
-export default Porfolio;
+export default Portfolio;

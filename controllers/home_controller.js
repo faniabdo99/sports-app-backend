@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
         'Bitch, my generation gets traumatized for breakfast!',
         'It\'s your choice to take this personally',
         'Mr. President, if I\'ve learned one thing today it\'s that sometimes you have to not give a fuck!',
-        'Think for you\'rself, don\'t be a sheep',
+        'Think for you\'rself, don\'t be sheep',
         'Well scientifically… traditions are an idiot thing',
         'I hate to break it to you, but what people call “love” is just a chemical reaction that compels animals to breed',
         'Weddings are basically just funerals with cake',
@@ -54,6 +54,7 @@ router.get('/', (req, res) => {
         'No amount of money ever bought a second of time',
         'I just want peace. Turns out resentment is corrosive, and I hate it',
         'You\'re not the only one cursed with knowledge',
+        'We should start our stories where they begin not start them where they get interesting',
         // @Shreif's contributions
         'If you are the smaterst person in the room, you are in the wrong room',
         'Common sense is not very common',

@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import Porfolio from './portfolio.js';
+import Portfolio from './portfolio.js';
 const User = (sequelize, Sequelize) => {
     const User = sequelize.define("user", {
         id: {
@@ -137,10 +137,8 @@ const User = (sequelize, Sequelize) => {
         }
     }
   );
-  User.hasMany(Porfolio, {
-    foreignKey: 'userId'
-  })
-
+  // Associations
+  // User.hasMany(Portfolio)
   return User;
 };
 export default User;
