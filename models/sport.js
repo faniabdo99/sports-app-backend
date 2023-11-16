@@ -23,12 +23,18 @@ const Sport = (sequelize, Sequelize) => {
       image:{
         type: Sequelize.STRING,
         allowNull: true,
-        defaultValue: "https://google.com"
+        defaultValue: "images/avatar.png",
+        get(){
+          return `${process.env.DOMAIN_NAME}${this.getDataValue('image')}`
+        }
       },
-      image: {
+      cover: {
         type: Sequelize.STRING,
         allowNull: true,
-        defaultValue: "https://google.com"
+        defaultValue: "images/avatar.png",
+        get(){
+          return `${process.env.DOMAIN_NAME}${this.getDataValue('cover')}`
+        }
       }
     },
     {
