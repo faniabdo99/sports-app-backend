@@ -11,7 +11,11 @@ const User = (sequelize, Sequelize) => {
         username: {
           type: Sequelize.STRING,
           unique: true,
-          allowNull: true
+          allowNull: true,
+          get(){
+            const emailValue = this.getDataValue('email')
+            return emailValue.slice(0, emailValue.indexOf('@'))
+          }
         },
         firstName: {
           type: Sequelize.STRING,
@@ -56,7 +60,10 @@ const User = (sequelize, Sequelize) => {
         avatar:{
           type: Sequelize.STRING,
           allowNull: false,
-          defaultValue: "https://google.com"
+          defaultValue: "images/avatar.png",
+          get() {
+            return `${process.env.DOMAIN_NAME}${this.getDataValue('avatar')}`;
+          },
         },
         bio: {
           type: Sequelize.TEXT,
@@ -118,20 +125,17 @@ const User = (sequelize, Sequelize) => {
           set(value) {
             throw new Error('Do not try to set the `fullName` value!');
           }
-        },
+        }
       },
       {
-        hooks : {
+        hooks: {
           beforeCreate: async (user, options) =>{
             await bcrypt.hash(user.password, 10, function(err, hash) {
               user.password = hash
             });
           },
-          afterCreate : (user, options) => {
-            user.username = user.email.slice(0, user.email.indexOf('@'))
-          },
         }
-    }
+      }
   );
   // Associations
   // User.hasMany(Portfolio)

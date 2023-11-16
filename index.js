@@ -20,7 +20,9 @@ import contact_request_controller from './controllers/contact_request_controller
 // Form Data Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
- 
+// Middlewares
+app.use(express.static('public'))
+
 // Routes
 app.use('/', home_controller);
 app.use('/users', user_controller);
