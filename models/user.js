@@ -124,15 +124,11 @@ const User = (sequelize, Sequelize) => {
         hooks : {
           beforeCreate: async (user, options) =>{
             await bcrypt.hash(user.password, 10, function(err, hash) {
-              user.update({
-                password: hash
-              })
+              user.password = hash
             });
           },
-          afterCreate : async (user, options) => {
-            await user.update({
-              username: user.email.slice(0, user.email.indexOf('@'))
-            })
+          afterCreate : (user, options) => {
+            user.username = user.email.slice(0, user.email.indexOf('@'))
           },
         }
     }

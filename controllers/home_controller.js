@@ -9,14 +9,10 @@ router.get('/', (req, res) => {
     const wisdomOfTheDay = [
         // @faniabdo99 contributions
         'One day and that day may never come, the backend server will be down but we will fix it',
-        'Anything in the 200 range is good',
         'The creator of expressJs is a sick and twisted fucker, and the developer is a stupid creature who enjoys misery',
         'Settle your scores face to face, not by creating a torture device called expressJs',
-        '400+ means you (dear user) fucked up',
-        '500s are tough, it means I personally fucked it, contact me faniabdo99@gmail.com',
         'There is no excuse for cheating, AT ALL',
         'Someday you will realize that you can\'t depend on anyone but yourself',
-        'Being realistic might come off as pessimistic',
         'Keep it real, life is fucked up and will always be',
         'The one given truth of life is humans are bad',
         'A person is smart, people are dumb',
@@ -29,7 +25,7 @@ router.get('/', (req, res) => {
         'You are the author of your own code',
         'Code should be written for humans to read it, not for computers to run it',
         'UI is like a joke, if you have to explain it, it\'s probably no good',
-        'I\'ll go, but don\'t you dare ask me to understands',
+        'I\'ll go, but don\'t you dare ask me to understand',
         'What, So everyone\'s supposed to sleep every single night now?',
         'Charging into \'em like a bull — that\'s how we grow as people.',
         'Worse, you\'re smart',
@@ -48,13 +44,13 @@ router.get('/', (req, res) => {
         'Listen, I\'m not the nicest guy in the universe, because I\'m the smartest, and being nice is something stupid people do to hedge their bets',
         'He\'s not a hot girl. He can\'t just bail on his life and set up shop in someone else\'s.',
         'Don\'t judge me, Cooper. You were never tested like I was. Few men have been.',
-        'Oh, How quickly we forget!',
-        'In the end, Karma has its way',
         'Sometimes you gotta run before you can walk',
         'No amount of money ever bought a second of time',
         'I just want peace. Turns out resentment is corrosive, and I hate it',
-        'You\'re not the only one cursed with knowledge',
-        'We should start our stories where they begin not start them where they get interesting',
+        'We should start our stories where they begin, not where they get interesting',
+        'Welcome to life, it\'s a boat full of holes but we are all on it',
+        'There comes a time in every man\'s life when he must choose the foundation on which his legacy will be built; one of compromise, or one of blood',
+        'The universe is basically an animal. It grazes on the ordinary. It creates infinite idiots just to eat them',
         // @Shreif's contributions
         'If you are the smaterst person in the room, you are in the wrong room',
         'Common sense is not very common',
@@ -67,7 +63,7 @@ router.get('/', (req, res) => {
     res.json({
         success: true,
         message: 'The backend application is online, Check today\'s wisdom',
-        wisdomOfTheDay: wisdomOfTheDay[Math.floor(Math.random()*wisdomOfTheDay.length)]
+        wisdomOfTheDay: wisdomOfTheDay[Math.floor(Math.random()*wisdomOfTheDay.length) + 1]
     })
 })
 export default router;
