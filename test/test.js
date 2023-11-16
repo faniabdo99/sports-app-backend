@@ -1,12 +1,8 @@
 import assert from 'assert';
-import express from 'express';
-app = express();
-describe('GET /', function () {
-    before(() => {
-        result = app.get('/')
-    })
-    it('should return a json object with wisdomOfTheDay', function (result) {
-        console.log(result)
-        assert.ok()
+describe('Array', function () {
+  describe('#indexOf()', function () {
+    it('should return -1 when the value is not present', function () {
+      assert.equal([1, 2, 3].indexOf(4), -1);
     });
+  });
 });
