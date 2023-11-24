@@ -6,27 +6,24 @@ import app from '../../index.js';
 chai.use(chaiHttp);
 const { expect } = chai;
 
-describe('GET /', () => {
+describe('GET /sports', () => {
   it('should return a status 200', (done) => {
     chai.request(app)
-      .get('/')
+      .get('/sports')
       .end((err, res) => {
         expect(res).to.have.status(200);
         done();
       });
   });
+});
 
-  it('should return a valid json', (done) => {
+describe('GET /sports/:id', () => {
+  it('should return a status 404 if there is no sport', (done) => {
     chai.request(app)
-      .get('/')
+      .get('/sports/INVALID_UUID')
       .end((err, res) => {
-        expect(res.body).to.include({
-          success: true,
-          message: "The backend application is online, Check today's wisdom",
-        });
+        expect(res).to.have.status(404);
         done();
       });
   });
-
-  // TODO: Learn how to test wisdom of the day
 });

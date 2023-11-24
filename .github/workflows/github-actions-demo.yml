@@ -2,9 +2,10 @@ name: Main CI
 run-name: ${{ github.actor }} Pushed a new commit, Running CI
 on: [push]
 jobs:
-  mocha:
+  setup_and_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run test
+      - run: npm run lint:fix

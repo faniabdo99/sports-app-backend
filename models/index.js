@@ -10,8 +10,9 @@ import config from '../config/config.json' assert {type: 'json'}
 const db = {};
 export let sequelize;
 if(process.env.NODE_ENV == 'testing'){
-  sequelize = new Sequelize(config.testing.database, config.testing.username, config.testing.password, config.testing,{
-    logging: console.log, // Enable logging
+  sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: 'testing.sqlite'
   });
 }else{
   sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, config.development,{
