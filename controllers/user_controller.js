@@ -8,6 +8,7 @@ const router = express.Router();
  **/
 router.get('/', (req, res) => {
     db.User.findAll().then(users =>{
+        // Dummy comment
         res.json(users)
     }).catch(error => {
         res.json(error)
