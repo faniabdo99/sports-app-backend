@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { Sequelize } from 'sequelize';
 import { fileURLToPath } from 'url';
-import config from '../config/config.json' assert { type: "json" };
+import config from '../config/config.json' assert { type: "json" }; // eslint-disable-line
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
