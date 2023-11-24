@@ -38,7 +38,7 @@ router.get('/:by/:value', (req, res) => {
   // Determine the filter type
   db.User.findOne({ where: { [req.params.by]: req.params.value } }).then((user) => {
     res.json(user);
-  }).catch((error) => {
+  }).catch(() => {
     res.sendStatus(404);
   });
 });

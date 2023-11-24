@@ -8,8 +8,8 @@ const router = express.Router();
  * GET /contact_request/
  * */
 router.get('/', (req, res) => {
-  db.ContactRequest.findAll().then((contact_request) => {
-    res.json(contact_request);
+  db.ContactRequest.findAll().then((contactRequest) => {
+    res.json(contactRequest);
   }).catch((error) => {
     res.json(error);
   });
@@ -34,9 +34,9 @@ router.post('/', (req, res) => {
  * params (one): uuid
  * */
 router.get('/:id', (req, res) => {
-  db.ContactRequest.findOne({ where: { id: req.params.id } }).then((contact_request) => {
-    res.json(contact_request);
-  }).catch((error) => {
+  db.ContactRequest.findOne({ where: { id: req.params.id } }).then((contactRequest) => {
+    res.json(contactRequest);
+  }).catch(() => {
     res.sendStatus(404);
   });
 });

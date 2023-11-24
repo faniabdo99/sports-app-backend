@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
       });
     // Send response
   }).catch((error) => {
-    console.log(error);
+    throw error;
   });
 });
 

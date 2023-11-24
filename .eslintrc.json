@@ -9,6 +9,10 @@
         "sourceType": "module"
     },
     "rules": {
-        "import/extensions": ["error", "always"]
+        "import/extensions": ["error", "always"],
+        "no-param-reassign": "off",
+        "consistent-return": "off",
+        "import/no-named-as-default-member": "off",
+        "import/no-named-as-default": "off"
     }
 }

@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   db.Portfolio.findOne({ where: { id: req.params.id } }).then((portfolio) => {
     res.json(portfolio);
-  }).catch((error) => {
+  }).catch(() => {
     res.sendStatus(404);
   });
 });

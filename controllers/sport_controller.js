@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
   db.Sport.findOne({ where: { id: req.params.id } }).then((sport) => {
     res.json(sport);
-  }).catch((error) => {
+  }).catch(() => {
     res.sendStatus(404);
   });
 });
