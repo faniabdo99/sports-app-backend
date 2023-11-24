@@ -8,9 +8,16 @@ const __dirname = path.dirname(__filename);
 const basename = path.basename(__filename);
 import config from '../config/config.json' assert {type: 'json'}
 const db = {};
-export let sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, config.development,{
-  logging: console.log, // Enable logging
-});
+export let sequelize;
+if(process.env.NODE_ENV == 'testing'){
+  sequelize = new Sequelize(config.testing.database, config.testing.username, config.testing.password, config.testing,{
+    logging: console.log, // Enable logging
+  });
+}else{
+  sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, config.development,{
+    logging: console.log, // Enable logging
+  });
+}
 
 const importModels = async () => {
   const files = fs.readdirSync(__dirname);

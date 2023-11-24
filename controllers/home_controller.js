@@ -54,6 +54,8 @@ router.get('/', (req, res) => {
         'Never hate your enemies. It affects your judgment',
         'The hardest choices require the strongest wills',
         'I know what it\'s like to lose. To feel so desperately that you\'re right, yet to fail nonetheless',
+        'It\'s because I don\'t! I have too',
+        'You attract what you fear',
         // @Shreif's contributions
         'A person is smart, people are dumb',
         'If you are the smaterst person in the room, you are in the wrong room',
